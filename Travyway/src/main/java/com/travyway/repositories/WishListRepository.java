@@ -12,6 +12,7 @@ import com.travyway.entities.WishList;
 public interface WishListRepository extends JpaRepository<WishList, Integer>{
 
     List<WishList> findByUserUserId(Integer userId);
-    Optional<WishList> findByUserIdAndPlaceId(Integer userId, Integer placeId);
+    Optional<WishList> findByUser_UserIdAndPlaceId(Integer userId, Integer placeId);
+
 
 }

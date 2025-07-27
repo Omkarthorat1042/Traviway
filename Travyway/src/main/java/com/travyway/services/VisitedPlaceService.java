@@ -53,7 +53,7 @@ public class VisitedPlaceService {
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + visitedPlaceDTO.getUserId()));
 
         // Check if user has already marked this place as visited
-        if (visitedPlaceRepository.findByUserIdAndPlaceId(visitedPlaceDTO.getUserId(), visitedPlaceDTO.getPlaceId()).isPresent()) {
+        if (visitedPlaceRepository.findByUser_UserIdAndPlaceId(visitedPlaceDTO.getUserId(), visitedPlaceDTO.getPlaceId()).isPresent()) {
             throw new IllegalArgumentException("User has already marked this place as visited.");
         }
 

@@ -53,7 +53,7 @@ public class WishListService {
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + wishlistDTO.getUserId()));
 
         // Check if place is already in wishlist for this user
-        if (wishlistRepository.findByUserIdAndPlaceId(wishlistDTO.getUserId(), wishlistDTO.getPlaceId()).isPresent()) {
+        if (wishlistRepository.findByUser_UserIdAndPlaceId(wishlistDTO.getUserId(), wishlistDTO.getPlaceId()).isPresent()) {
             throw new IllegalArgumentException("Place is already in the wishlist for this user.");
         }
 

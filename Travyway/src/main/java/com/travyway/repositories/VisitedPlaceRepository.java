@@ -12,6 +12,6 @@ import com.travyway.entities.VisitedPlace;
 public interface VisitedPlaceRepository extends JpaRepository<VisitedPlace, Integer>{
 
     List<VisitedPlace> findByUserUserId(Integer userId);
-    Optional<VisitedPlace> findByUserIdAndPlaceId(Integer userId, Integer placeId);
+    Optional<VisitedPlace> findByUser_UserIdAndPlaceId(Integer userId, Integer placeId);
 
 }
