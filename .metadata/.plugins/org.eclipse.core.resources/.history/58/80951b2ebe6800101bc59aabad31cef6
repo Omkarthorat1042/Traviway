@@ -1,0 +1,5 @@
+package com.contentservice.service;
+
+public class CityService {
+
+}

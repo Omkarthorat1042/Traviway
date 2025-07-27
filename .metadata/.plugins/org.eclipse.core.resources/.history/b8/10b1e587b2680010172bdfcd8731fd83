@@ -1,0 +1,5 @@
+package com.contentservice.entities;
+
+public class Place {
+
+}

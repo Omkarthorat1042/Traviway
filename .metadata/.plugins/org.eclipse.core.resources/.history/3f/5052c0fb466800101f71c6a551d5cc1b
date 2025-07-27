@@ -1,0 +1,5 @@
+package com.travyway.entities;
+
+public class Blog {
+
+}

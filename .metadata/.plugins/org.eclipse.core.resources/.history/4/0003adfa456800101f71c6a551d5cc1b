@@ -1,0 +1,7 @@
+spring.application.name=Travyway
+spring.application.name=RestApiDemo1-1
+spring.datasource.url=jdbc:postgresql://localhost:5432/traviway 
+spring.datasource.username=postgres
+spring.datasource.password=root
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true

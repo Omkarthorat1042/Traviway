@@ -1,0 +1,13 @@
+package com.contentservice;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Travyway1Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Travyway1Application.class, args);
+	}
+
+}

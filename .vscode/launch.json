@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ContentService<ContentService>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.contentservice.ContentService",
+            "projectName": "ContentService",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
