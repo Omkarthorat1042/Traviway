@@ -1,9 +1,0 @@
-package com.contentservice.repositories;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.contentservice.entities.City;
-
-public interface CityRepository extends JpaRepository<City, Integer> {
-
-}

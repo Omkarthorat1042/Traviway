@@ -53,6 +53,13 @@ public class PlaceService {
                 .collect(Collectors.toList());
     }
 
+    // New method to implement search functionality
+    public List<PlaceDTO> searchPlaces(String title, Integer cityId, Integer categoryId) {
+        return placeRepository.searchPlaces(title, cityId, categoryId).stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+    
     @Transactional
     public Optional<PlaceDTO> createPlace(PlaceDTO placeDTO) {
         Optional<Category> categoryOptional = categoryRepository.findById(placeDTO.getCategoryId());

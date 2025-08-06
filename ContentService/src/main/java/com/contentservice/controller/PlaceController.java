@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.contentservice.entities.dto.PlaceDTO;
@@ -27,9 +28,25 @@ public class PlaceController {
     private PlaceService placeService;
 
     @GetMapping
-    public ResponseEntity<List<PlaceDTO>> getAllPlaces() {
-        List<PlaceDTO> places = placeService.getAllPlaces();
-        return ResponseEntity.ok(places);
+    public ResponseEntity<List<PlaceDTO>> getAllPlaces(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) Integer cityId,
+            @RequestParam(required = false) Integer categoryId) {
+        
+        // Check if any search parameters are provided and are not empty strings.
+        boolean isSearchQueryPresent = (title != null && !title.trim().isEmpty()) || cityId != null || categoryId != null;
+
+        if (isSearchQueryPresent) {
+            List<PlaceDTO> places = placeService.searchPlaces(title, cityId, categoryId);
+            if (places.isEmpty()) {
+                // Return an empty list with an OK status if no results are found.
+                return ResponseEntity.ok(List.of());
+            }
+            return ResponseEntity.ok(places);
+        } else {
+            // If no search parameters are provided, return an empty response
+            return ResponseEntity.ok(List.of());
+        }
     }
 
     @GetMapping("/{id}")
@@ -78,5 +95,4 @@ public class PlaceController {
         }
         return ResponseEntity.notFound().build();
     }
-
 }

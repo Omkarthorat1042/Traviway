@@ -25,6 +25,10 @@ public class City {
 
     @Column(name = "city_name", nullable = false, unique = true)
     private String cityName;
+    // One-to-many relationship with CityImage
+    // A city can have multiple images
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CityImage> cityImages;
 
     @JsonIgnore
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)

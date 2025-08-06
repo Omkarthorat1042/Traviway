@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<item key="TypeHierarchyViewPart.hierarchyview" value="2"/>
+	<item key="TypeHierarchyViewPart.qualifiednames" value="false"/>
+	<item key="TypeHierarchyViewPart.linkeditors" value="false"/>
+	<item key="TypeHierarchyViewPart.orientation" value="3"/>
 	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">
 		<item key="group_libraries" value="true"/>
 		<item key="layout" value="2"/>
@@ -14,8 +18,8 @@
 	<section name="quick_assist_proposal_size">
 	</section>
 	<section name="NewClassCreationWizard.dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="44"/>
-		<item key="DIALOG_Y_ORIGIN" value="212"/>
+		<item key="DIALOG_X_ORIGIN" value="268"/>
+		<item key="DIALOG_Y_ORIGIN" value="240"/>
 		<item key="DIALOG_WIDTH" value="700"/>
 		<item key="DIALOG_HEIGHT" value="780"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
@@ -55,5 +59,55 @@
 		<item key="DIALOG_WIDTH" value="478"/>
 		<item key="DIALOG_HEIGHT" value="681"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="BuildPathsPropertyPage">
+		<item key="pageIndex" value="3"/>
+	</section>
+	<section name="SourceActionDialog.methods">
+		<item key="VisibilityModifier" value="1"/>
+		<item key="FinalModifier" value="false"/>
+		<item key="SynchronizedModifier" value="false"/>
+		<item key="Comments" value="false"/>
+	</section>
+	<section name="AddGetterSetterDialog">
+		<item key="SortOrdering" value="false"/>
+		<item key="RemoveFinal" value="false"/>
+	</section>
+	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
+		<item key="DIALOG_X_ORIGIN" value="149"/>
+		<item key="DIALOG_Y_ORIGIN" value="0"/>
+		<item key="DIALOG_WIDTH" value="678"/>
+		<item key="DIALOG_HEIGHT" value="889"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="JavadocWizardDialog">
+		<item key="DIALOG_X_ORIGIN" value="477"/>
+		<item key="DIALOG_Y_ORIGIN" value="54"/>
+		<item key="DIALOG_WIDTH" value="985"/>
+		<item key="DIALOG_HEIGHT" value="698"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="javadoc">
+		<item key="javadoc_command_history" value="C:\sts-4.22.1\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.11.v20240426-1830\jre\bin\javadoc.exe"/>
+		<item key="fromStandard" value="true"/>
+		<item key="docletname" value=""/>
+		<item key="docletpath" value=""/>
+		<item key="access" value="public"/>
+		<item key="use" value="true"/>
+		<item key="author" value="true"/>
+		<item key="version" value="true"/>
+		<item key="nodeprecated" value="false"/>
+		<item key="nodeprecatedlist" value="false"/>
+		<item key="splitindex" value="true"/>
+		<item key="noindex" value="false"/>
+		<item key="notree" value="false"/>
+		<item key="nonavbar" value="false"/>
+		<item key="openinbrowser" value="true"/>
+		<item key="source" value="17"/>
+		<item key="antpath" value="E:\Travyway\ContentService\javadoc.xml"/>
+		<item key="destdir" value="E:\Travyway\ContentService\doc"/>
+		<item key="doctitle" value="Traviway"/>
+		<section name="projects">
+		</section>
 	</section>
 </section>

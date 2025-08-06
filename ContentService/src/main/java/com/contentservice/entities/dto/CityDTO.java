@@ -20,4 +20,8 @@ public class CityDTO{
     // For creation/update, you'd usually pass IDs.
     private List<PlaceDTO> places;
     private List<LocalFoodDTO> localFoods;
+    
+    @NotBlank(message = "City image cannot be empty")
+    @Size(max = 255, message = "City image URL must be less than 255 characters")
+    private String cityImage;
 }

@@ -1,4 +1,4 @@
-GitRepositoriesView.GitDirectories=E\:\\Travyway\\.git;
-GitRepositoriesView.GitDirectories.relative=.git;
+GitRepositoriesView.GitDirectories=E\:\\Travyway\\.git;E\:\\Smart Contact Manager Project\\Smart_Contact_Manager\\.git;
+GitRepositoriesView.GitDirectories.relative=.git;E\:\\Smart Contact Manager Project\\Smart_Contact_Manager\\.git;
 core_autoIgnoreDerivedResources=false
 eclipse.preferences.version=1
