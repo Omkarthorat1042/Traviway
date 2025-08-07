@@ -47,6 +47,7 @@ public class FlightBookingService {
                     .and("destinationLocationCode", destination)
                     .and("departureDate", departureDate)
                     .and("adults", 1)
+                    .and("currencyCode", "INR")
             );
         } catch (ResponseException e) {
             throw new AmadeusApiException("Amadeus API error: " + e.getDescription(), e);

@@ -27,7 +27,6 @@ public class FlightBookingController {
             @RequestParam String destination,
             @RequestParam String date) {
         try {
-            // Call Amadeus API via service
             FlightOfferSearch[] offers = flightBookingService.searchFlights(origin, destination, date);
 
             List<FlightDto> flights = new ArrayList<>();
@@ -42,12 +41,13 @@ public class FlightBookingController {
                             var itinerary = offer.getItineraries()[0];
                             var segments = itinerary.getSegments();
                             if (segments != null && segments.length > 0) {
-                                var segment = segments[0];
-                                dto.setOrigin(segment.getDeparture().getIataCode());
-                                dto.setDestination(segment.getArrival().getIataCode());
-                                dto.setDepartureTime(segment.getDeparture().getAt());
-                                dto.setArrivalTime(segment.getArrival().getAt());
-                                dto.setAirlineCode(segment.getCarrierCode());
+                                var firstSegment = segments[0];
+                                var lastSegment = segments[segments.length - 1];
+                                dto.setOrigin(firstSegment.getDeparture().getIataCode());
+                                dto.setDestination(lastSegment.getArrival().getIataCode());
+                                dto.setDepartureTime(firstSegment.getDeparture().getAt());
+                                dto.setArrivalTime(lastSegment.getArrival().getAt());
+                                dto.setAirlineCode(firstSegment.getCarrierCode());
                             }
                         }
 
@@ -56,13 +56,16 @@ public class FlightBookingController {
                             dto.setCurrency(offer.getPrice().getCurrency());
                         }
                     } catch (Exception e) {
-                        // In case any field is missing or parsing fails, skip or set defaults
                         e.printStackTrace();
                     }
 
-                    flights.add(dto);
+                    // Add only if the destination matches what user requested
+                    if (dto.getDestination() != null && dto.getDestination().equalsIgnoreCase(destination)) {
+                        flights.add(dto);
+                    }
                 }
             }
+
 
             return ResponseEntity.ok(flights);
 
