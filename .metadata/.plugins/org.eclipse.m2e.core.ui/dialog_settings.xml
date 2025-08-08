@@ -2,6 +2,9 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="E:\Travyway\ContactService"/>
+			<item value="E:\Travyway\Travyway"/>
+			<item value="E:\Travyway\ContentService"/>
 			<item value="E:\Travyway\apigateway"/>
 			<item value="E:\Travyway\eureka-server"/>
 			<item value="C:\Users\omkar\Downloads\JWT-AUTHENTICATION-TUTORIAL\JWT-AUTHENTICATION-TUTORIAL"/>
