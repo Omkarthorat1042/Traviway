@@ -2,8 +2,10 @@ package com.authservice.service;
 
 import com.authservice.model.User;
 import com.authservice.repository.UserRepository;
-//import com.authservice.dto.UpdateCredentialsRequest;
 import com.authservice.dto.UserDTO;
+
+import java.util.Optional;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,13 +20,22 @@ public class AuthUserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public User loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByUsername(username)
             .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+    }
+    
+    public Optional<UserDTO> getUserByUsername(String username) {
+        return userRepository.findByUsername(username).map(user -> {
+            UserDTO dto = new UserDTO();
+            BeanUtils.copyProperties(user, dto, "passwordHash");
+            return dto;
+        });
     }
 
     @Transactional
@@ -45,25 +56,8 @@ public class AuthUserService implements UserDetailsService {
         }
         return convertToDto(userRepository.save(user));
     }
-    
-// // service/AuthUserService.java
-//    @Transactional
-//    public UserDTO updateCredentials(UpdateCredentialsRequest req) {
-//        User user = userRepository.findByUsername(req.getUsername())
-//            .orElseThrow(() -> new IllegalArgumentException("User not found"));
-//        if (req.getNewUsername() != null && !req.getNewUsername().isBlank()) {
-//            if (userRepository.existsByUsername(req.getNewUsername())) {
-//                throw new IllegalArgumentException("New username already taken");
-//            }
-//            user.setUsername(req.getNewUsername());
-//        }
-//        if (req.getNewPassword() != null && !req.getNewPassword().isBlank()) {
-//            user.setPasswordHash(passwordEncoder.encode(req.getNewPassword()));
-//        }
-//        userRepository.save(user);
-//        return convertToDto(user);
-//    }
 
+    // Optional: updateCredentials method commented out - add if needed
 
     public UserDTO convertToDto(User user) {
         UserDTO dto = new UserDTO();
@@ -71,5 +65,9 @@ public class AuthUserService implements UserDetailsService {
         dto.setPassword(null);
         return dto;
     }
-}
+    public Optional<UserDTO> findByUsername(String username) {
+        return userRepository.findByUsername(username)
+                    .map(this::convertToDto);
+    }
 
+}

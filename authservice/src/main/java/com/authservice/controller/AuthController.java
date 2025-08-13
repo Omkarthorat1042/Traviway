@@ -8,12 +8,14 @@ import com.authservice.dto.OTPRequest;
 import com.authservice.dto.ResetPasswordRequest;
 //import com.authservice.dto.UpdateCredentialsRequest;
 import com.authservice.jwt.JwtUtil;
+import com.authservice.model.User;
 import com.authservice.service.AuthUserService;
 import com.authservice.service.PasswordResetService;
 
 import jakarta.validation.Valid;
 
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,7 +43,7 @@ public class AuthController {
     public ResponseEntity<?> registerUser(@Valid @RequestBody UserDTO userDTO) {
         try {
             UserDTO createdUser = authUserService.registerUser(userDTO);
-            return new ResponseEntity<>(createdUser, HttpStatus.OK);
+            return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(Map.of("message", e.getMessage()), HttpStatus.CONFLICT);
         }
@@ -49,17 +51,17 @@ public class AuthController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<?> loginUser(@RequestBody AuthRequest authRequest) throws Exception {
+    public ResponseEntity<?> loginUser(@Valid @RequestBody AuthRequest authRequest) {
         try {
             authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
+                new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
             );
         } catch (BadCredentialsException e) {
-            return new ResponseEntity<>("Incorrect username or password", HttpStatus.UNAUTHORIZED);
+            return ResponseEntity.status(401).body("Incorrect username or password");
         }
 
-        final UserDetails userDetails = authUserService.loadUserByUsername(authRequest.getUsername());
-        final String jwt = jwtUtil.generateToken(userDetails);
+        User user = (User) authUserService.loadUserByUsername(authRequest.getUsername());
+        String jwt = jwtUtil.generateToken(user);
         return ResponseEntity.ok(new AuthResponse(jwt, "Login successful"));
     }
     
