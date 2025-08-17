@@ -11,7 +11,7 @@
 	<groupId>com.adminservice</groupId>
 	<artifactId>ContactService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>ContactService</name>
 	<description>Demo project for cdac travyway project for admin service</description>
 	<url/>
@@ -61,7 +61,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

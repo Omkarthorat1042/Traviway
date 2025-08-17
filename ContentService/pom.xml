@@ -15,7 +15,7 @@
     <groupId>com.contentservice</groupId>
     <artifactId>ContentService</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>ContentService</name>
     <description>Demo project for CDAC Travyway</description>
 
@@ -65,7 +65,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
+            
         </dependency>
 
         <!-- Testing -->
